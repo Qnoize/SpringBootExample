@@ -1,4 +1,4 @@
-package ru.ejmentor.SpringBootExample;
+package ru.ejmentor.SpringBootExample.app;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -12,7 +12,6 @@ import ru.ejmentor.SpringBootExample.service.UserService;
 @Controller
 public class RegisterController {
 
-    @Autowired
     private UserService service;
 
     @Autowired

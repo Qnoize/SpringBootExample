@@ -3,7 +3,6 @@ package ru.ejmentor.SpringBootExample.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.ejmentor.SpringBootExample.model.Role;
 import ru.ejmentor.SpringBootExample.model.User;
 import ru.ejmentor.SpringBootExample.repository.RoleRepository;
@@ -12,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -53,7 +51,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public boolean userExistByName(String userName) { return true; }
+    public boolean userExistByName(String userName) { return userRepository.isExistByName(userName) != null; }
 
     @Override
     public User getByName(String userName) {
