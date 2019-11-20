@@ -3,10 +3,12 @@ package ru.ejmentor.SpringBootExample.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.ejmentor.SpringBootExample.model.Role;
 import ru.ejmentor.SpringBootExample.model.User;
 import ru.ejmentor.SpringBootExample.repository.RoleRepository;
 import ru.ejmentor.SpringBootExample.repository.UserRepository;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<User> getAllUsers(){ return userRepository.findAll(); }
     @Override
     public User getById(Long id){
@@ -35,6 +38,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
+    @Transactional
     public void deleteUserById(Long id){ userRepository.deleteById(id); }
     @Override
     public void editUser(User user){
@@ -47,7 +51,7 @@ public class UserServiceImpl implements UserService {
         if(!userExistByName(user.getUserName())){
             user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
             user.setRole(Collections.singleton(new Role(1L, "ROLE_USER")));
-            userRepository.save(user);
+            userRepository.saveAndFlush(user);
         }
     }
 

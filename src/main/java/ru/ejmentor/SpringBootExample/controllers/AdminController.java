@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.ejmentor.SpringBootExample.model.User;
 import ru.ejmentor.SpringBootExample.service.UserService;
+
 import java.util.List;
 
 @Controller
@@ -22,7 +23,9 @@ public class AdminController {
     public void setService(UserService service) { this.service = service; }
 
     @GetMapping(value = "/admin")
-    public ModelAndView viewAdminPage(ModelAndView modelAndView) {
+    public ModelAndView viewAdminPage(
+            ModelAndView modelAndView,
+            @ModelAttribute("user") User user) {
         List<User> users = service.getAllUsers();
         modelAndView.setViewName("adminMainPage");
         modelAndView.addObject("list", users);
@@ -44,8 +47,8 @@ public class AdminController {
             @RequestParam("id") Long id,
             ModelAndView modelAndView) {
 
-        modelAndView.setViewName("redirect:/admin");
         if (id != null) { service.deleteUserById(id); }
+        modelAndView.setViewName("redirect:/admin");
         return modelAndView;
     }
 
@@ -58,7 +61,6 @@ public class AdminController {
             user.setUserPassword(newUserPassword);
             service.editUser(user);
             modelAndView.setViewName("redirect:/admin");
-
         return modelAndView;
     }
 }
