@@ -1,4 +1,4 @@
-package ru.ejmentor.SpringBootExample.controllers;
+package ru.jmentor.SpringBootExample.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ejmentor.SpringBootExample.model.User;
-import ru.ejmentor.SpringBootExample.service.UserService;
+import ru.jmentor.SpringBootExample.model.User;
+import ru.jmentor.SpringBootExample.service.UserService;
 
 @Controller
 public class RegisterController {

@@ -1,13 +1,13 @@
-package ru.ejmentor.SpringBootExample.service;
+package ru.jmentor.SpringBootExample.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ejmentor.SpringBootExample.model.Role;
-import ru.ejmentor.SpringBootExample.model.User;
-import ru.ejmentor.SpringBootExample.repository.RoleRepository;
-import ru.ejmentor.SpringBootExample.repository.UserRepository;
+import ru.jmentor.SpringBootExample.model.Role;
+import ru.jmentor.SpringBootExample.model.User;
+import ru.jmentor.SpringBootExample.repository.RoleRepository;
+import ru.jmentor.SpringBootExample.repository.UserRepository;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,6 +1,7 @@
-package ru.ejmentor.SpringBootExample.service;
+package ru.jmentor.SpringBootExample.service;
 
-import ru.ejmentor.SpringBootExample.model.User;
+import ru.jmentor.SpringBootExample.model.User;
+
 import java.util.List;
 
 public interface UserService {

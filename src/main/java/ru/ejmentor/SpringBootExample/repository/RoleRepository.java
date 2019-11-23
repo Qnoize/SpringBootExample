@@ -1,1 +1,0 @@
-package ru.ejmentor.SpringBootExample.repository;import org.springframework.data.jpa.repository.JpaRepository;import ru.ejmentor.SpringBootExample.model.Role;public interface RoleRepository extends JpaRepository<Role, Long> {}

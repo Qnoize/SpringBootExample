@@ -1,4 +1,4 @@
-package ru.ejmentor.SpringBootExample.model;
+package ru.jmentor.SpringBootExample.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
