@@ -3,7 +3,6 @@ package ru.jmentor.SpringBootExample.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.jmentor.SpringBootExample.model.Role;
 import ru.jmentor.SpringBootExample.model.User;
 import ru.jmentor.SpringBootExample.repository.RoleRepository;
@@ -29,23 +28,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsers(){ return userRepository.findAll(); }
+
     @Override
     public User getById(Long id){
         User user = userRepository.getById(id);
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         return user;
     }
+
     @Override
-    @Transactional
     public void deleteUserById(Long id){ userRepository.deleteById(id); }
+
     @Override
     public void editUser(User user){
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         user.setRole(Collections.singleton(new Role(1L, "ROLE_USER")));
         userRepository.save(user);
     }
+
     @Override
     public void saveUser(User user){
         if(!userExistByName(user.getUserName())){

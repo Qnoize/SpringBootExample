@@ -8,8 +8,17 @@ import java.util.Set;
 @Entity
 @Table(name = "roleTable")
 public class Role {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "userRole")
     private String userRole;
+
+    @ManyToMany(mappedBy = "role")
+    @Transient
     private Set<User> users = new HashSet<>();
 
     public Role() { }
@@ -24,19 +33,10 @@ public class Role {
         this.userRole = role.getUserRole();
     }
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() { return id; }
 
-    @Column(name = "userRole")
     public String getUserRole() { return userRole; }
 
-    @ManyToMany
-    @JoinTable(
-            name = "userRole",
-            joinColumns = @JoinColumn(name = "roleId"),
-            inverseJoinColumns = @JoinColumn(name = "userId"))
     public Set<User> getUsers() { return users; }
 
     public void setId(Long id) { this.id = id; }

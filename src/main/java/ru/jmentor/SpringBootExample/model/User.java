@@ -27,8 +27,7 @@ public class User implements UserDetails {
     private String userEmail;
     @ManyToMany(
             targetEntity = Role.class,
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE})
+            fetch = FetchType.LAZY)
     @JoinTable(
             name = "userRole",
             joinColumns = @JoinColumn(name = "userId"),
