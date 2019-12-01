@@ -5,7 +5,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.jmentor.SpringBootExample.model.Role;
 import ru.jmentor.SpringBootExample.model.User;
-import ru.jmentor.SpringBootExample.repository.RoleRepository;
 import ru.jmentor.SpringBootExample.repository.UserRepository;
 
 import java.util.Collections;
@@ -15,17 +14,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserServiceImpl(PasswordEncoder passwordEncoder) { this.passwordEncoder = passwordEncoder; }
 
     @Autowired
-    public void setRepository(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
+    public void setRepository(UserRepository userRepository) { this.userRepository = userRepository; }
 
     @Override
     public List<User> getAllUsers(){ return userRepository.findAll(); }
